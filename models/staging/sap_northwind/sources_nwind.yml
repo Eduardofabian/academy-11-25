@@ -67,3 +67,23 @@ sources:
             tests:
               - unique
               - not_null
+      - name: customers
+        description: Tabela de Clientes da northwind
+        columns:
+          - name: customer_id
+            description: Chave promária da tabela costumers
+            tests:
+              - unique
+              - not_null
+          - name: company_name
+            description: Nome da Companhia que ele pertence
+            tests:
+              - unique
+              - not_null
+          - name: contact_name
+            description: Nome do consumidor
+            tests:
+              - unique
+              - not_null
+
+
