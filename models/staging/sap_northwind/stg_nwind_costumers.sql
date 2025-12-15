@@ -7,8 +7,8 @@ with
         select
             {{ dbt_utils.generate_surrogate_key(['customer_id']) }} as customer_sk
             , cast (customer_id as string) as customer_id
-            , cast(company_name as string) as company_name
-            , cast(contact_name as string) as contact_name
+            , cast(company_name as string) as customer_name
+            , cast(contact_name as string) as customer_contact_name
             , cast(contact_title as string) as contact_title
             , cast(address as string) as customer_address
             , cast(city as string) as customer_city
