@@ -1,6 +1,4 @@
 with
-    -- import ctes
-
     products as (
         select *
         from {{ ref('stg_nwind_products') }}
@@ -9,19 +7,18 @@ with
         select *
         from {{ ref('stg_nwind_categories') }}
     )
-    , suppliers as(
+    , suppliers as (
         select *
-        from{{ref('stg_nwind_suppliers')}}
+        from {{ ref('stg_nwind_suppliers') }}
     )
-    -- transformation
 
     , joined as (
         select
-            products.product_pk
+            products.product_sk  -- Passando o Hash adiante
+            , products.product_id -- Passando o ID original
             , products.product_name
             , categories.category_name
             , suppliers.supplier_name
-            , suppliers.supplier_phone
             , suppliers.supplier_city
             , suppliers.supplier_region
             , suppliers.supplier_country
@@ -35,4 +32,5 @@ with
         left join categories on products.category_fk = categories.category_pk
         left join suppliers on products.supplier_fk = suppliers.supplier_pk
     )
+
 select * from joined
