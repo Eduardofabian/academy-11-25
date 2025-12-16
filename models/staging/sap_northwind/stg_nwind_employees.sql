@@ -1,7 +1,6 @@
 with
     source_employees as (
         select *
-        -- Corrigido: nome da tabela sem erros e sem espaços extras
         from {{ source('nwind', 'employees') }}
     )
 
@@ -18,7 +17,6 @@ with
             , cast(region as string) as region
             , cast(country as string) as country
             , cast(home_phone as string) as phone
-        -- Corrigido: nome da CTE idêntico ao definido lá em cima
         from source_employees
     )
 
